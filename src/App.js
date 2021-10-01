@@ -1,13 +1,8 @@
+import { Navigation } from "./Components/Navigation/Navigation.jsx";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello world</p>
-      </header>
-    </div>
-  );
+  return <Navigation />;
 }
 
 export default App;
