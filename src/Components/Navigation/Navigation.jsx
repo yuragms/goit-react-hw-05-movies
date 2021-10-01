@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { List, Item } from "Navigation.styled.jsx";
+import { List, Item } from "./Navigation.styled.jsx";
 
 const Navigation = () => (
   <List>
