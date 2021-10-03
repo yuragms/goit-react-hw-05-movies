@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import HomeView from "./Views/HomeView.jsx";
 import MoviePage from "./Views/MovieView.jsx";
 import NotFoundView from "./Views/NotfoundView.jsx";
+import MovieDetailsView from "./Views/MovieDetailsView.jsx";
 
 import "./App.css";
 
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="/movies" exact>
           <MoviePage />
+        </Route>
+        <Route path="/movies/:movieId">
+          <MovieDetailsView />
         </Route>
         <Route>
           <NotFoundView />
