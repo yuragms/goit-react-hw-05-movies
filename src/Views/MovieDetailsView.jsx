@@ -4,7 +4,7 @@ import { getDetailsmovie } from "../Servises/FetchMoviesApi.jsx";
 import MovieCard from "../Components/MovieCard/MovieCard.jsx";
 
 const MovieDetailsView = () => {
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState("");
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -12,19 +12,20 @@ const MovieDetailsView = () => {
   }, [movieId]);
 
   console.log(movie);
+  console.log(movie.poster_path);
 
-  const imgBaseUrl = "https://image.tmdb.org/t/p/w500/";
-  const { backdrop_path, title, genres, release_date, vote_average, overview } =
-    movie;
+  const imgBaseUrl = "https://image.tmdb.org/t/p/w300/";
 
   return (
     <MovieCard
-      url={`${imgBaseUrl}${backdrop_path}`}
-      title={title}
-      genres={genres.map((genre) => genre.name).join(", ")}
-      release_date={release_date}
-      vote_average={vote_average}
-      overview={overview}
+      url={`${imgBaseUrl}${movie.poster_path}`}
+      title={movie.title}
+      genres={
+        movie.genres && movie.genres.map((genre) => genre.name).join(", ")
+      }
+      release_date={movie.release_date}
+      vote_average={movie.vote_average}
+      overview={movie.overview}
     />
   );
 };
