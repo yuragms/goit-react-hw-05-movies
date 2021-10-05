@@ -27,4 +27,33 @@ const getDetailsmovie = async (movieId) => {
   }
 };
 
-export { getDayPopularFilms, getDetailsmovie };
+const getCastInfoMovie = async (movieId) => {
+  try {
+    const data = await axios.get(
+      `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&language=en-US`
+    );
+
+    return data.data.cast;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getReviewInfoMovie = async (movieId) => {
+  try {
+    const data = await axios.get(
+      `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US`
+    );
+
+    return data.data.results;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export {
+  getDayPopularFilms,
+  getDetailsmovie,
+  getCastInfoMovie,
+  getReviewInfoMovie,
+};

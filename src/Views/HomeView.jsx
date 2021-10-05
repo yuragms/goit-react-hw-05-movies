@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getDayPopularFilms } from "../Servises/FetchMoviesApi.jsx";
-import { Link } from "react-router-dom";
+import listMovies from "../Components/ListMovies/ListMovies.jsx";
 // import MoviePage from './MovieView.jsx';
 
 const HomePage = () => {
@@ -18,22 +18,10 @@ const HomePage = () => {
 
   console.log(topMovies);
 
-  const listTopMovies = (topMovies) => {
-    return (
-      <ul>
-        {topMovies.map(({ original_title, id }) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`}>{original_title}</Link>
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
   return (
     <>
       <h1>Trending today</h1>
-      {status === "resolved" && listTopMovies(topMovies)}
+      {status === "resolved" && listMovies(topMovies)}
     </>
   );
 };
