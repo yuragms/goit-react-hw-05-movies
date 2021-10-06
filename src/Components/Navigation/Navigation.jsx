@@ -8,9 +8,7 @@ const Navigation = () => (
       </NavLinkByStyled>
     </Item>
     <Item>
-      <NavLinkByStyled to="/movies" exact>
-        Movies
-      </NavLinkByStyled>
+      <NavLinkByStyled to="/movies">Movies</NavLinkByStyled>
     </Item>
   </List>
 );

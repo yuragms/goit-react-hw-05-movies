@@ -28,22 +28,27 @@ const Cast = () => {
   console.log(movieId);
   console.log(cast);
   return (
-    <List>
-      {cast &&
-        cast.map((castItem) => (
-          <Item key={castItem.id}>
-            <Img
-              src={
-                castItem.profile_path
-                  ? `${imgBaseUrl}${castItem.profile_path}`
-                  : urlNoFoto
-              }
-            />
-            <Name>{castItem.name}</Name>
-            <Character>{castItem.character}</Character>
-          </Item>
-        ))}
-    </List>
+    <>
+      <List>
+        {cast &&
+          cast.map((castItem) => (
+            <Item key={castItem.id}>
+              <Img
+                src={
+                  castItem.profile_path
+                    ? `${imgBaseUrl}${castItem.profile_path}`
+                    : urlNoFoto
+                }
+              />
+              <Name>{castItem.name}</Name>
+              <Character>{castItem.character}</Character>
+            </Item>
+          ))}
+      </List>
+      {cast && cast.length === 0 && (
+        <p>We don't have any cast for this movie.</p>
+      )}
+    </>
   );
 };
 

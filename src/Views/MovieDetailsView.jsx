@@ -1,4 +1,10 @@
-import { useParams, useRouteMatch, Route } from "react-router-dom";
+import {
+  useParams,
+  useRouteMatch,
+  Route,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getDetailsmovie } from "../Servises/FetchMoviesApi.jsx";
 import MovieCard from "../Components/MovieCard/MovieCard.jsx";
@@ -10,6 +16,9 @@ const MovieDetailsView = () => {
   const [movie, setMovie] = useState("");
   const { url } = useRouteMatch();
   const { movieId } = useParams();
+  const location = useLocation();
+  const history = useHistory();
+  console.log(location);
 
   useEffect(() => {
     getDetailsmovie(movieId).then(setMovie);
@@ -21,19 +30,28 @@ const MovieDetailsView = () => {
 
   const imgBaseUrl = "https://image.tmdb.org/t/p/w300/";
 
+  const onGoBackClick = () => {
+    history.push(location.state?.from ? location.state.from : "/");
+  };
+
   return (
     <>
       {movie && (
-        <MovieCard
-          url={`${imgBaseUrl}${movie.poster_path}`}
-          title={movie.title}
-          genres={
-            movie.genres && movie.genres.map((genre) => genre.name).join(", ")
-          }
-          release_date={movie.release_date}
-          vote_average={movie.vote_average}
-          overview={movie.overview}
-        />
+        <>
+          <button type="button" onClick={onGoBackClick}>
+            Go Back
+          </button>
+          <MovieCard
+            url={`${imgBaseUrl}${movie.poster_path}`}
+            title={movie.title}
+            genres={
+              movie.genres && movie.genres.map((genre) => genre.name).join(", ")
+            }
+            release_date={movie.release_date}
+            vote_average={movie.vote_average}
+            overview={movie.overview}
+          />
+        </>
       )}
       <AdditionaList />
 

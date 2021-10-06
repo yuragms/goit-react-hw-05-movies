@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import SearchForm from "../Components/Form/Form";
 import { getQueryFilms } from "../Servises/FetchMoviesApi";
 import ListMovies from "../Components/ListMovies/ListMovies.jsx";
 
 const MoviePage = () => {
-  const [query, setQuery] = useState(null);
+  const location = useLocation();
+  const history = useHistory();
+  const [query, setQuery] = useState(() => {
+    return new URLSearchParams(location.search).get("query") ?? null;
+  });
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -16,11 +21,13 @@ const MoviePage = () => {
 
   const handleFormSubmit = (searchFieldvalue) => {
     setQuery(searchFieldvalue);
+    history.push({ ...location, search: `query=${searchFieldvalue}` });
     // setData([]);
     // setError(null);
   };
 
   console.log(movie);
+  console.log(history);
 
   return (
     <>
