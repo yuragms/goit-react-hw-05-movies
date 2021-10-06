@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const listMovies = (topMovies) => {
+const ListMovies = (topMovies) => {
+  const location = useLocation();
+
+  console.log(location);
   return (
     <ul>
       {topMovies.map(({ original_title, id }) => (
@@ -12,4 +15,4 @@ const listMovies = (topMovies) => {
   );
 };
 
-export default listMovies;
+export default ListMovies;

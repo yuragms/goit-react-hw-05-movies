@@ -1,19 +1,12 @@
 import { useEffect, useState } from "react";
 import { getDayPopularFilms } from "../Servises/FetchMoviesApi.jsx";
-import listMovies from "../Components/ListMovies/ListMovies.jsx";
-// import MoviePage from './MovieView.jsx';
+import ListMovies from "../Components/ListMovies/ListMovies.jsx";
 
 const HomePage = () => {
   const [topMovies, setTopMovies] = useState(null);
-  const [status, setStatus] = useState("idle");
 
   useEffect(() => {
-    setStatus("pending");
-    getDayPopularFilms()
-      .then((res) => setTopMovies(res))
-      .then(() => {
-        setStatus("resolved");
-      });
+    getDayPopularFilms().then((res) => setTopMovies(res));
   }, []);
 
   console.log(topMovies);
@@ -21,7 +14,7 @@ const HomePage = () => {
   return (
     <>
       <h1>Trending today</h1>
-      {status === "resolved" && listMovies(topMovies)}
+      {topMovies && ListMovies(topMovies)}
     </>
   );
 };

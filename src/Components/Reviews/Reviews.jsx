@@ -11,15 +11,20 @@ const Review = ({ movieId }) => {
 
   console.log(review);
   return (
-    <ul>
-      {review &&
-        review.map((item) => (
-          <li key={item.id}>
-            <h3>{item.author}</h3>
-            <p>{item.content}</p>
-          </li>
-        ))}
-    </ul>
+    <>
+      <ul>
+        {review &&
+          review.map((item) => (
+            <li key={item.id}>
+              <h3>{item.author}</h3>
+              <p>{item.content}</p>
+            </li>
+          ))}
+      </ul>
+      {review && review.length === 0 && (
+        <p>We don't have any reviews for this movie.</p>
+      )}
+    </>
   );
 };
 
