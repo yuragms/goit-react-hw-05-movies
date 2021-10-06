@@ -3,6 +3,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import SearchForm from "../Components/Form/Form";
 import { getQueryFilms } from "../Servises/FetchMoviesApi";
 import ListMovies from "../Components/ListMovies/ListMovies.jsx";
+import toast from "react-hot-toast";
 
 const MoviePage = () => {
   const location = useLocation();
@@ -16,7 +17,12 @@ const MoviePage = () => {
     if (!query) {
       return;
     }
-    getQueryFilms(query).then(setMovie);
+    getQueryFilms(query).then((data) => {
+      if (data.length === 0) {
+        toast.error("Нету фильмов с таким запросом");
+      }
+      setMovie(data);
+    });
   }, [query]);
 
   const handleFormSubmit = (searchFieldvalue) => {

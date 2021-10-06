@@ -11,6 +11,7 @@ import MovieCard from "../Components/MovieCard/MovieCard.jsx";
 import AdditionaList from "../Components/AdditionList/AdditionList.jsx";
 import Cast from "../Components/Cast/Cast.jsx";
 import Review from "../Components/Reviews/Reviews";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 
 const MovieDetailsView = () => {
   const [movie, setMovie] = useState("");
@@ -38,9 +39,12 @@ const MovieDetailsView = () => {
     <>
       {movie && (
         <>
-          <button type="button" onClick={onGoBackClick}>
-            Go Back
-          </button>
+          <div>
+            <button type="button" onClick={onGoBackClick}>
+              <HiOutlineArrowNarrowLeft />
+              Go Back
+            </button>
+          </div>
           <MovieCard
             url={`${imgBaseUrl}${movie.poster_path}`}
             title={movie.title}
