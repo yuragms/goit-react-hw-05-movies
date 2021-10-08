@@ -2,6 +2,7 @@ import {
   useParams,
   useRouteMatch,
   Route,
+  Switch,
   useLocation,
   useHistory,
 } from "react-router-dom";
@@ -58,13 +59,14 @@ const MovieDetailsView = () => {
         </>
       )}
       <AdditionaList />
-
-      <Route path={`${url}/cast`}>
-        <Cast />
-      </Route>
-      <Route path={`${url}/reviews`}>
-        <Review movieId={movieId} />
-      </Route>
+      <Switch>
+        <Route path={`${url}/cast`}>
+          <Cast />
+        </Route>
+        <Route path={`${url}/reviews`}>
+          <Review movieId={movieId} />
+        </Route>
+      </Switch>
     </>
   );
 };
