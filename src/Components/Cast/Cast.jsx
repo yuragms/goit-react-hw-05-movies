@@ -9,9 +9,9 @@ const Cast = () => {
   const url = useRouteMatch();
 
   console.log(movieId);
-  const imgBaseUrl = "https://image.tmdb.org/t/p/w92/";
-  const urlNoFoto =
-    "https://www.percomcourses.com/wp-content/uploads/2017/06/blankman.jpg";
+  // const imgBaseUrl = "https://image.tmdb.org/t/p/w92/";
+  // const urlNoFoto =
+  //   "https://www.percomcourses.com/wp-content/uploads/2017/06/blankman.jpg";
 
   useEffect(() => {
     const idFromUrl = url.path.match(/movies\/([0-9]+)\//);
@@ -38,8 +38,8 @@ const Cast = () => {
               <Img
                 src={
                   castItem.profile_path
-                    ? `${imgBaseUrl}${castItem.profile_path}`
-                    : urlNoFoto
+                    ? `${process.env.REACT_APP_IMGBASEURL}${castItem.profile_path}`
+                    : process.env.REACT_APP_CASTNOFOTO
                 }
               />
               <Name>{castItem.name}</Name>
