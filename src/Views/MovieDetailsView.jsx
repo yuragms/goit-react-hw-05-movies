@@ -30,7 +30,7 @@ const MovieDetailsView = () => {
   console.log(movie.poster_path);
   console.log(url);
 
-  const imgBaseUrl = "https://image.tmdb.org/t/p/w300/";
+  // const imgBaseUrl = "https://image.tmdb.org/t/p/w300/";
 
   const onGoBackClick = () => {
     history.push(location.state?.from ? location.state.from : "/");
@@ -47,7 +47,7 @@ const MovieDetailsView = () => {
             </button>
           </div>
           <MovieCard
-            url={`${imgBaseUrl}${movie.poster_path}`}
+            url={`${process.env.REACT_APP_IMG_DETAILS_BASE_URL}${movie.poster_path}`}
             title={movie.title}
             genres={
               movie.genres && movie.genres.map((genre) => genre.name).join(", ")
