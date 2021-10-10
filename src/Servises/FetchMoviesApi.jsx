@@ -1,12 +1,12 @@
 import axios from "axios";
 // https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>
 
-const BASE_URL = "https://api.themoviedb.org/3/";
-const KEY = "f0bfae51191eefc01e995fd22563790b";
+// const BASE_URL = "https://api.themoviedb.org/3/";
+// const KEY = "f0bfae51191eefc01e995fd22563790b";
 
-axios.defaults.baseURL = BASE_URL;
+axios.defaults.baseURL = process.env.REACT_APP_IMG_FETCH_BASE_URL;
 axios.defaults.params = {
-  api_key: KEY,
+  api_key: process.env.REACT_APP_FETCH_KEY,
 };
 
 const getDayPopularFilms = async () => {
