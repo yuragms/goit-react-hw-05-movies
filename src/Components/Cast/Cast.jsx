@@ -38,8 +38,8 @@ const Cast = () => {
               <Img
                 src={
                   castItem.profile_path
-                    ? `${REACT_APP_IMG_BASE_URL}${castItem.profile_path}`
-                    : REACT_APP_CAST_NO_FOTO
+                    ? `${process.env.REACT_APP_IMG_BASE_URL}${castItem.profile_path}`
+                    : process.env.REACT_APP_CAST_NO_FOTO
                 }
               />
               <Name>{castItem.name}</Name>
