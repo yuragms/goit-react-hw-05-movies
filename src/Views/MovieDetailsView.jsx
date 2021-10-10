@@ -61,7 +61,7 @@ const MovieDetailsView = () => {
       <AdditionaList />
       <Switch>
         <Route path={`${url}/cast`}>
-          <Cast />
+          <Cast movieId={movieId} />
         </Route>
         <Route path={`${url}/reviews`}>
           <Review movieId={movieId} />
