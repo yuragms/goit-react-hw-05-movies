@@ -13,6 +13,7 @@ import AdditionaList from "../Components/AdditionList/AdditionList.jsx";
 import Cast from "../Components/Cast/Cast.jsx";
 import Review from "../Components/Reviews/Reviews";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import { Toaster } from "react-hot-toast";
 
 const MovieDetailsView = () => {
   const [movie, setMovie] = useState("");
