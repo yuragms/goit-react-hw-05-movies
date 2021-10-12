@@ -51,7 +51,7 @@ const getReviewInfoMovie = async (movieId) => {
 const getQueryFilms = async (query) => {
   try {
     const data = await axios.get(
-      `search/movie?api_key=&query=${query}&language=en-US&page=1&include_adult=false`
+      `search/movie?&query=${query}&language=en-US&page=1&include_adult=false`
     );
     return data.data.results;
   } catch (error) {

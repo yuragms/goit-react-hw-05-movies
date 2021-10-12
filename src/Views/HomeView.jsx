@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <>
       <h1>Trending today</h1>
-      {topMovies && ListMovies(topMovies)}
+      {topMovies && <ListMovies topMovies={topMovies} />}
     </>
   );
 };

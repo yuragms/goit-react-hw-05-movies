@@ -38,7 +38,7 @@ const MoviePage = () => {
   return (
     <>
       <SearchForm onSubmit={handleFormSubmit} />
-      {movie && ListMovies(movie)}
+      {movie && <ListMovies topMovies={movie} />}
     </>
   );
 };
